@@ -18,7 +18,7 @@
 // MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { cpSync, existsSync, mkdirSync, readdirSync, statSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-app.ts';
@@ -66,7 +66,19 @@ mkdirSync(out, { recursive: true });
 cpSync(appDir, join(out, 'app'), { recursive: true });
 mkdirSync(join(out, 'screenshots'), { recursive: true });
 cpSync(shotDir, join(out, 'screenshots'), { recursive: true });
-buildDossier(join(out, 'app'), join(out, 'screenshots'), join(out, 'dossier.json'));
+
+// The scorer's caps: only text_max_bytes shapes the bytes; the rest
+// refuse an entry the scorer would refuse.
+writeFileSync(
+  join(out, 'dossier.json'),
+  buildDossier(out, {
+    text_max_bytes: 163840,
+    screenshots: { max: 4, max_bytes: 262144 },
+    app_max_files: 993,
+    app_max_bytes: 50331648,
+    app_path_max_bytes: 1000,
+  }),
+);
 
 // Confirm the handover is complete before the grader reads it.
 const outShots = readdirSync(join(out, 'screenshots')).filter((n) => !n.startsWith('.'));
