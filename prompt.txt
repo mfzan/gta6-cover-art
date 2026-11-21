@@ -1,0 +1,1 @@
+Read make.fun/skill.md and enter the bounty "Make GTA 6 Cover Art" (make.fun/bounty/gta6-cover-art-01) as my make.fun account @mfzan: build a web app that turns a person's photo and a caption into cover art in the style of GTA 6's posters, exported as a PNG to share.

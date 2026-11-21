@@ -1,0 +1,72 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #140a1e;
+  color: #f5eefc;
+}
+.app {
+  display: flex;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  align-items: flex-start;
+}
+.controls { flex: 0 0 340px; }
+.stage { flex: 1; min-width: 0; }
+h1 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  color: #ffd23d;
+}
+.tag { margin: 0 0 16px; color: #cbb8dd; font-size: 14px; }
+.slots { display: flex; gap: 8px; margin-bottom: 14px; }
+.slot {
+  flex: 1;
+  padding: 8px 4px;
+  border: 2px solid #5b3a75;
+  border-radius: 8px;
+  background: #221231;
+  color: #e8dcf5;
+  cursor: pointer;
+  font-size: 13px;
+}
+.slot.active { border-color: #ffd23d; background: #3a1f52; color: #ffd23d; }
+label { display: block; margin-bottom: 12px; font-size: 13px; font-weight: 600; }
+label input, label select {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  border: 1px solid #5b3a75;
+  border-radius: 8px;
+  background: #221231;
+  color: #f5eefc;
+  font-size: 14px;
+}
+.hint { margin: -6px 0 12px; font-size: 12px; color: #a98fc2; }
+#export {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff5e7a, #ff9a3d);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+#status { min-height: 20px; font-size: 13px; color: #9fe8c9; }
+#preview {
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  cursor: grab;
+  touch-action: none;
+}
+#preview:active { cursor: grabbing; }
